@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rive/rive.dart';
 
+import 'gen/assets.gen.dart';
+
 void main() => runApp(MaterialApp(
       home: MyRiveAnimation(),
     ));
@@ -55,12 +57,19 @@ class _MyRiveAnimationState extends State<MyRiveAnimation> {
 
   @override
   Widget build(BuildContext context) {
+    // 画面サイズを取得
+    final Size screenSize = MediaQuery.of(context).size;
+    final double screenWidth = screenSize.width;
+
     return Scaffold(
       body: Center(
         // デフォルト
-        child: RiveAnimation.asset(
-          'assets/untitled.riv',
-        ),
+        // child: SizedBox(
+        //   width: screenWidth * 0.6,
+        //   child: const RiveAnimation.asset(
+        //     'assets/untitled.riv',
+        //   ),
+        // ),
 
         /// いいね
         // child: SizedBox(
@@ -98,6 +107,11 @@ class _MyRiveAnimationState extends State<MyRiveAnimation> {
         //     ),
         //   ],
         // ),
+
+        // Loading
+        child:  RiveAnimation.asset(
+            Assets.animations.loading.path,
+        ),
       ),
     );
   }
